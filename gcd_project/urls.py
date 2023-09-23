@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from gcd_calculator import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.calculate_gcd, name='calculate_gcd'),
+
 ]

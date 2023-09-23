@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculate GCD</title>
+</head>
+<body>
+    <h1>Calculate GCD</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="numbers">Enter positive integers separated by spaces:</label>
+        <input type="text" name="numbers" id="numbers" required>
+        <br>
+        <button type="submit">Calculate GCD</button>
+    </form>
+    {% if error_message %}
+    <p>{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
