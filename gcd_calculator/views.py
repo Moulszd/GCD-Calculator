@@ -1,59 +1,23 @@
-from django.shortcuts import render
-from .gcd import gcd_numbers
+from django.shortcuts import render  # import render function to render html templates
+from .gcd import gcd_numbers #to import the 
 
-def calculate_gcd(request):
-    if request.method == 'POST':
-        input_numbers = request.POST.get('numbers', '').split()
-        try:
-            input_numbers = [int(num) for num in input_numbers if num.isdigit() and int(num) > 0]
-            if len(input_numbers) >= 2:
-                gcd = gcd_numbers(input_numbers)
-                return render(request, 'gcd_calculator/result.html', {'gcd': gcd})
-            else:
-                error_message = "Please enter at least two valid positive integers."
-        except ValueError:
-            error_message = "Invalid input. Please enter positive integers separated by spaces."
+def calculate_gcd(request): #view fuction that take a request 
+    if request.method == 'POST': # cheking the request method is POST 
+        input_numbers = request.POST.get('numbers', '').split()  # Getting the input string
+
+        # Split the input string into a list of strings with filter and validate the input
+        input_numbers = [int(num) for num in input_numbers if num.isdigit() and int(num) > 0]    
+
+        # Checking if there are at least two valid positive integers
+        if len(input_numbers) >= 2:
+            gcd = gcd_numbers(input_numbers)
+
+            # renders the 'result.html' template with the GCD value passed as context data
+            return render(request, 'gcd_calculator/result.html', {'gcd': gcd})
+        else:
+            error_message = "Please enter at least two valid positive integers." # message informing the user to enter at least two valid positive integers.
     else:
-        error_message = None
+        error_message = None # this indicating that there are no errors or messages to display.
 
+    # renders the 'calculate_gcd.html' template
     return render(request, 'gcd_calculator/calculate_gcd.html', {'error_message': error_message})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# from django.utils import gcd_two_numbers, gcd_numbers
-
-# Create your views here.
-
-# def calculate_gcd(request):
-#     # if request.method == 'POST':
-#         # fist_number = request.POST.get('number1', '')
-#         # second_number = request.POST.get('number2', '')
-
-#     # def computegcd(a, b):
-#     #     if b==0:
-#     #         return a
-#     #     else:
-#     #         return computegcd(b, a%b)
-        
-#     # gcd_number = computegcd(Numbers.second_number, Numbers.first_number%Numbers.second_number)
-
-
-
-
-#     return render(request, 'gcd_calculator/index.html', {
-#         'model':model
-#         })

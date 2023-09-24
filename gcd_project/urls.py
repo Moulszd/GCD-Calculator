@@ -19,6 +19,6 @@ from django.urls import path
 from gcd_calculator import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.calculate_gcd, name='calculate_gcd'),
+    path('', views.calculate_gcd, name='calculate_gcd'), # adding the path of the function in the views
 
 ]

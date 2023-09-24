@@ -1,19 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--This allows you to apply Bootstrap styles to your webpage.-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- title of the webpage displayed in the browser's title bar or tab-->
     <title>Calculate GCD</title>
 </head>
 <body>
-    <h1>Calculate GCD</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="numbers">Enter positive integers separated by spaces:</label>
-        <input type="text" name="numbers" id="numbers" required>
-        <br>
-        <button type="submit">Calculate GCD</button>
-    </form>
-    {% if error_message %}
-    <p>{{ error_message }}</p>
-    {% endif %}
+    <div class="container">
+        <div class="row justify-content-center mt-lg-5">
+            <div class="col-md-8">
+                <div class="card p-5">
+                    <h1 class="text-center mb-4">Calculate GCD</h1>
+                    <form method="post"> <!--POST method attribute, indicating that it will submit data to the server.-->
+                        {% csrf_token %} <!--This is a Django template tag CSRF(Cross Site Request Forgery ) for protection-->
+                        <div class="form-group">
+                            <input type="text" class="form-control border border-success rounded"  placeholder="Enter positive integers separated by spaces" name="numbers" id="numbers" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Calculate GCD</button> <!-- submit the form-->
+                    </form>
+                    {% if error_message %}
+                    <div class="alert alert-danger mt-3">
+                        {{ error_message }} <!-- If the variable is not empty the error message will be displayed inside this alert box.-->
+                    </div>
+                    {% endif %} <!--This is a Django template tag that marks the end of the conditional block-->
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

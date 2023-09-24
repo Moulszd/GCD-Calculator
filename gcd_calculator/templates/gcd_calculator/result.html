@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>GCD Result</title>
 </head>
 <body>
-    <h1>GCD Result</h1>
-    <p>The GCD of the provided numbers is: {{ gcd }}</p>
-    <a href="{% url 'calculate_gcd' %}">Calculate another GCD</a>
+    <div class="container">
+        <div class="row m-5">
+            <div class="col-md-6 mx-auto">
+                <h1>GCD Result</h1> <!-- write the title -->
+                <p>The GCD of the provided numbers is: {{ gcd }}</p> <!-- here retunen you the result -->
+                <a class="btn btn-success rounded" href="{% url 'calculate_gcd' %}">Calculate another GCD</a> <!-- to return to the home page -->
+            </div>
+        </div>
+    </div>
 </body>
 </html>
