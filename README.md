@@ -17,5 +17,7 @@ The primary purpose of this project is to provide a user-friendly online tool fo
 
 ## Technology Stack
 Django: For web application development
+
 Bootstrap: For front-end styling and responsiveness
+
 Python: For server-side logic and GCD calculations
